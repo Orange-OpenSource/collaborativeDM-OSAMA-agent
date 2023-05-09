@@ -4,6 +4,8 @@ The Qualitative Evaluation consists on Managing a set of casacding failure scena
 <p align="center">
 <img src="https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent/blob/master/smartHome.png" width="300" height="250">
 </p> 
+
+
 See sub-folders for specific content:
 ```
 collaborativeDM-OSAMA-agent/QualitativeEvaluation-ISWC/
