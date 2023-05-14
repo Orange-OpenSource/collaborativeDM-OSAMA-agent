@@ -1,0 +1,60 @@
+[Cartago] Workspace privateWorkspaceKelvin created.
+[Cartago] artifact diagno2: Diagnosis("kelvinKB.owl") at privateWorkspaceKelvin created.
+[Cartago] Workspace privateWorkspacePhillips created.
+[Cartago] artifact diagno1: Diagnosis("phillipsKB.owl") at privateWorkspacePhillips created.
+[Cartago] Workspace sharedworkspace created.
+[Cartago] artifact context: Dependency() at sharedworkspace created.
+[Cartago] artifact time: Time() at sharedworkspace created.
+[kelvin] join workspace /main/privateWorkspaceKelvin: done
+[orange] join workspace /main/sharedworkspace: done
+[kelvin] join workspace /main/sharedworkspace: done
+[orange] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[kelvin] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[phillips] join workspace /main/privateWorkspacePhillips: done
+[orange] focus on context: done
+[kelvin] focus on context: done
+[phillips] join workspace /main/sharedworkspace: done
+[amazon] join workspace /main/sharedworkspace: done
+[phillips] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[orange] focusing on artifact time (at workspace /main/sharedworkspace) using namespace default
+[amazon] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[kelvin] focusing on artifact diagno2 (at workspace /main/privateWorkspaceKelvin) using namespace default
+[phillips] focus on context: done
+[orange] focus on time: done
+[amazon] focus on context: done
+[kelvin] focus on diagno2: done
+[phillips] focusing on artifact diagno1 (at workspace /main/privateWorkspacePhillips) using namespace default
+[amazon] focusing on artifact time (at workspace /main/sharedworkspace) using namespace default
+[phillips] focus on diagno1: done
+[amazon] focus on time: done
+[kelvin] i'm the DM manager kelvin
+[amazon] I'm the DM manager amazon
+[orange] I'm the DM manager orange
+[phillips] i'm the DM manager phillips
+[orange] A failure detected by orangeon the device alarm its type AlarmXM
+[orange] Get the MN of the device alarm
+[MonitoringArtifact] done
+[orange] Request diagnosis from agent phillips
+[phillips] Proposed recovery Action SoftwareRestartAlarmXM
+[orange] Executing recovery action SoftwareRestartAlarmXMon the device alarm
+[orange] Still having a failure :-(
+[orange] *Start cascading failure recovery Plan*
+alarm
+[orange]  DKG refers to [smokeSensor]
+[orange] send CFM Check request to : orange
+[orange] A failure arrives !
+[orange] Diagnosis...............
+[orange] Get the MN of the device smokeSensor
+[orange] Get monitoring indicators
+[orange] Request diagnosis from agent kelvin
+[kelvin] Proposed recovery Action SoftwareRestartSmokeSensorXM
+[orange] Executing SoftwareRestartSmokeSensorXMon smokeSensor
+[orange] Still having a failure
+[orange] Start cascading failure recovery Plan
+smokeSensor
+[orange]  DKG refers To []
+[orange] send end check to the requester : self
+[orange] 1 EndCheck received
+[orange] End of CFM Check request
+[orange] all responses arrived !
+[orange] Recover...............
