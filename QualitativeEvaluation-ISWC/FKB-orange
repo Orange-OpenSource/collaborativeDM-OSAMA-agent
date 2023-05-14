@@ -1,1 +1,36 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/orangeinnovation/IoTF#"
+     xml:base="http://www.semanticweb.org/orangeinnovation/IoTF"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:NetworkI="http://www.semanticweb.org/orangeinnovation/IoTF#NetworkI/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF"/>
 
+
+        <!-- http://www.semanticweb.org/orangeinnovation/IoTF#WIFIRepeaterXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#WIFIRepeaterXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceWIFIRepeaterXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceWIFIRepeaterXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailStop"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#WIFIRepeaterXM"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartWIFIRepeaterXM"/>
+        <hasFailureCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x0001</hasFailureCode>
+    </owl:NamedIndividual>
+
+      <!-- http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartWIFIRepeaterXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartWIFIRepeaterXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestart"/>
+    </owl:NamedIndividual>
+
+
+</rdf:RDF>
