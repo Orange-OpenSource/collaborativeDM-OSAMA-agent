@@ -1,0 +1,76 @@
+[Cartago] Workspace privateWorkspaceKelvin created.
+[Cartago] artifact diagno2: Diagnosis("kelvinKB.owl") at privateWorkspaceKelvin created.
+[Cartago] Workspace privateWorkspacePhillips created.
+[Cartago] artifact diagno1: Diagnosis("phillipsKB.owl") at privateWorkspacePhillips created.
+[Cartago] Workspace sharedworkspace created.
+[Cartago] artifact context: Dependency() at sharedworkspace created.
+[Cartago] artifact time: Time() at sharedworkspace created.
+[orange] join workspace /main/sharedworkspace: done
+[orange] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[kelvin] join workspace /main/privateWorkspaceKelvin: done
+[orange] focus on context: done
+[amazon] join workspace /main/sharedworkspace: done
+[kelvin] join workspace /main/sharedworkspace: done
+[orange] focusing on artifact time (at workspace /main/sharedworkspace) using namespace default
+[phillips] join workspace /main/privateWorkspacePhillips: done
+[amazon] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[kelvin] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[orange] focus on time: done
+[amazon] focus on context: done
+[kelvin] focus on context: done
+[phillips] join workspace /main/sharedworkspace: done
+[amazon] focusing on artifact time (at workspace /main/sharedworkspace) using namespace default
+[kelvin] focusing on artifact diagno2 (at workspace /main/privateWorkspaceKelvin) using namespace default
+[phillips] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[orange] I'm the DM manager orange
+[amazon] focus on time: done
+[kelvin] focus on diagno2: done
+[phillips] focus on context: done
+[phillips] focusing on artifact diagno1 (at workspace /main/privateWorkspacePhillips) using namespace default
+[amazon] I'm the DM manager amazon
+[kelvin] i'm the DM manager kelvin
+[phillips] focus on diagno1: done
+[phillips] i'm the DM manager phillips
+[amazon] A failure detected by amazonon the device lightbulb its type LightBulbXM
+[amazon] Get the MN of the device lightbulb
+[MonitoringArtifact] done
+[amazon] Request diagnosis from agent phillips
+[phillips] Proposed recovery Action FirmwareUpdateLightBulbXM
+[amazon] Executing recovery action FirmwareUpdateLightBulbXMon the device lightbulb
+[amazon] Still having a failure :-(
+[amazon] *Start cascading failure recovery Plan*
+lightbulb
+[amazon]  DKG refers to [alarm]
+[amazon] send CFM Check request to : amazon
+[amazon] A failure arrives !
+[amazon] Diagnosis...............
+[amazon] Get the MN of the device alarm
+[amazon] Get monitoring indicators
+[amazon] Request diagnosis from agent phillips
+[phillips] Proposed recovery Action SoftwareRestartAlarmXM
+[amazon] Executing SoftwareRestartAlarmXMon alarm
+[amazon] Still having a failure
+[amazon] Start cascading failure recovery Plan
+alarm
+[amazon]  DKG refers To [leakDetector]
+[amazon] Request help from other agents
+[amazon] Wait for endCheck from dependent agents....
+[orange] A failure arrives !
+[orange] Diagnosis...............
+[orange] Get the MN of the device leakDetector
+[orange] Get monitoring indicators
+[orange] Request diagnosis from agent kelvin
+[kelvin] Proposed recovery Action FirmwareUpdateLeakDetectionXM
+[orange] Executing FirmwareUpdateLeakDetectionXMon leakDetector
+[orange] Still having a failure
+[orange] Start cascading failure recovery Plan
+leakDetector
+[orange]  DKG refers To [no device]
+[orange] send end check to the requester : amazon
+[amazon] 1 EndCheck received
+[amazon] End of CFM Check request
+[amazon] send end check to the requester self
+[amazon] all responses arrived !
+[amazon] Recover...............
+[amazon] 1 EndCheck received
+[amazon] all responses arrived !
