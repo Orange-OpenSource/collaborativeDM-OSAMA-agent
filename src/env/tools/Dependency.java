@@ -25,9 +25,7 @@ public class Dependency extends Artifact {
 	void init() {	 
          httpClient = HttpClient.newBuilder()
                     .version(HttpClient.Version.HTTP_2)
-                    .connectTimeout(Duration.ofSeconds(10))
-                    .proxy(ProxySelector.of(new InetSocketAddress("cs.pr-proxy.service.sd.diod.tech", 3128)))
-                    //.proxy(ProxySelector.of(new InetSocketAddress("proxypac.si.francetelecom.fr",8080)))
+                    .connectTimeout(Duration.ofSeconds(10)
                     .build();
        token=getTokenFromThingIN();
  
