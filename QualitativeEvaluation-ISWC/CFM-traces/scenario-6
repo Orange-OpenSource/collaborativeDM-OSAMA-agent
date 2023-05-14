@@ -1,0 +1,44 @@
+phillips] focus on context: done
+[amazon] focus on context: done
+[orange] focusing on artifact time (at workspace /main/sharedworkspace) using namespace default
+[phillips] focusing on artifact diagno1 (at workspace /main/privateWorkspacePhillips) using namespace default
+[amazon] focusing on artifact time (at workspace /main/sharedworkspace) using namespace default
+[kelvin] join workspace /main/sharedworkspace: done
+[orange] focus on time: done
+[phillips] focus on diagno1: done
+[kelvin] focusing on artifact context (at workspace /main/sharedworkspace) using namespace default
+[amazon] focus on time: done
+[kelvin] focus on context: done
+[kelvin] focusing on artifact diagno2 (at workspace /main/privateWorkspaceKelvin) using namespace default
+[orange] I'm the DM manager orange
+[amazon] I'm the DM manager amazon
+[phillips] i'm the DM manager phillips
+[kelvin] focus on diagno2: done
+[kelvin] i'm the DM manager kelvin
+[orange] A failure detected by orangeon the device airconditioner its type AirconditionerXM
+[orange] Get the MN of the device airconditioner
+[MonitoringArtifact] done
+[orange] Request diagnosis from agent kelvin
+[kelvin] Proposed recovery Action SoftwareRestartAirconditionerXM
+[orange] Executing recovery action SoftwareRestartAirconditionerXMon the device airconditioner
+[orange] Still having a failure :-(
+[orange] *Start cascading failure recovery Plan*
+airconditioner
+[orange]  DKG refers to [temperatureSensor]
+[orange] send CFM Check request to : orange
+[orange] A failure arrives !
+[orange] Diagnosis...............
+[orange] Get the MN of the device temperatureSensor
+[orange] Get monitoring indicators
+[orange] Request diagnosis from agent kelvin
+[kelvin] Proposed recovery Action SoftwareRestartTemperatureSensorXM
+[orange] Executing SoftwareRestartTemperatureSensorXMon temperatureSensor
+[orange] Still having a failure
+[orange] Start cascading failure recovery Plan
+temperatureSensor
+[orange]  DKG refers To []
+[orange] send end check to the requester : self
+[orange] 1 EndCheck received
+[orange] End of CFM Check request
+[orange] all responses arrived !
+[orange] Recover...............
