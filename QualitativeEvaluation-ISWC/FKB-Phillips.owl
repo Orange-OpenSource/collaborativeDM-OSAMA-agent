@@ -1,1 +1,391 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/orangeinnovation/IoTF#"
+     xml:base="http://www.semanticweb.org/orangeinnovation/IoTF"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:NetworkI="http://www.semanticweb.org/orangeinnovation/IoTF#NetworkI/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF"/>
+
+
+<!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLightBulbXM -->
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLightBulbXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+ <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceLighBulbXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceLighBulbXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#LightBulbXM"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLightBulbXM"/>
+        <hasFailureCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x23442</hasFailureCode>
+    </owl:NamedIndividual>
+
+       <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LightBulbXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#LightBulbXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#AlarmXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#AlarmXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceAlarmXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceAlarmXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#AlarmXM"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartAlarmXM"/>
+        <hasFailureCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x3432</hasFailureCode>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#StuckAtAlarmXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#StuckAtAlarmXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#StuckAt"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#AlarmXM"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartAlarmXM"/>
+        <hasFailureCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x3433</hasFailureCode>
+    </owl:NamedIndividual>
+      <!-- http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartAlarmXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartAlarmXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestart"/>
+    </owl:NamedIndividual>
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#WindowXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#WindowXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceWindowXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceWindowXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#WindowXM"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartWindowXM"/>
+        <hasFailureCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x0002</hasFailureCode>
+    </owl:NamedIndividual>
+
+      <!-- http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartWindowXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartWindowXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestart"/>
+    </owl:NamedIndividual>
+
+        <!-- http://www.semanticweb.org/orangeinnovation/IoTF#MotionSensorXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#MotionSensorXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceMotionSensorXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceMotionSensorXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#MotionSensorXM"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartMotionSensorXM"/>
+        <hasFailureCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0x0001</hasFailureCode>
+    </owl:NamedIndividual>
+
+      <!-- http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartMotionSensorXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestartMotionSensorXM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareRestart"/>
+    </owl:NamedIndividual>
+ 
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice2XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice2XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device2MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice2XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice2XM"/>
+        <hasFailureCode>0x8564002</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device2MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice2XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice2XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice4XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice4XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device4MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice4XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice4XM"/>
+        <hasFailureCode>0x8564004</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device4MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice4XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice4XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+
+      <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice6XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice6XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device6MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice6XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice6XM"/>
+        <hasFailureCode>0x8564006</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device6MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice6XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice6XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+
+
+
+
+      <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice8XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice8XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device8MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice8XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice8XM"/>
+        <hasFailureCode>0x8564008</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device8MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice8XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice8XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice10XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice10XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device10MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice10XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice10XM"/>
+        <hasFailureCode>0x85640010</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device10MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice10XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice10XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+
+
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice12XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice12XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device12MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice12XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice12XM"/>
+        <hasFailureCode>0x85640012</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device12MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice12XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice12XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice14XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice14XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device14MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice14XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice14XM"/>
+        <hasFailureCode>0x85640014</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device14MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice14XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice14XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+
+
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice16XM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#HighVarianceDevice16XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FailureMode"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#HighVariance"/>
+        <happensAt rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#Device16MX"/>
+        <hasRecoveryAction rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice16XM"/>
+        <isCausedBy rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice16XM"/>
+        <hasFailureCode>0x85640016</hasFailureCode>
+        <NetworkI:O rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</NetworkI:O>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#LeakDetectorMX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#Device16MX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#DeviceType"/>
+    </owl:NamedIndividual>
+
+     <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareFailureDevice16XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#SoftwareFailure"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateLeakDetectionXM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdateDevice16XM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/orangeinnovation/IoTF#FirmwareUpdate"/>
+    </owl:NamedIndividual>
+
+
+</rdf:RDF>
 
