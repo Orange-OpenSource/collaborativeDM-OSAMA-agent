@@ -1,360 +1,1085 @@
- # Software Name : Dependencies inference
- # Version: 0.0
- # SPDX-FileCopyrightText: Copyright (c) 2022[-2022] Orange
- # SPDX-License-Identifier: AGPL-3.0-only
- #
- # This software is distributed under the GNU Affero General Public License v3.0 only,
- # the text of which is available at https://spdx.org/licenses/AGPL-3.0-only.html
- # or see the "license.txt" file for more details.
- #
- # Author: Amal GUITTOUM
- # Software description: Dependencies inference in smart home scenarios
-@prefix dp: <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#> .
-@prefix demo:	<http://thingin.orange.com/formationthingin/supervisordemo/> .
-@prefix dk: <http://www.data-knowledge.org/dk/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix core: <https://saref.etsi.org/core/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix eupont: <http://elite.polito.it/ontologies/eupont.owl#> .
-@base <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD> .
-dp:AC-Off rdf:type owl:NamedIndividual ,
-dp:Trigger ;
-dp:relatedTo dp:ACoff .
-dp:ACOn rdf:type owl:NamedIndividual ,
-core:OnState .
-dp:ACoff rdf:type owl:NamedIndividual ,
-core:OffState .
-dp:AdjustTemp rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:adjustTemp .
-dp:AirConditionner rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ,
-core:Device ;
-dp:changesProperty dp:TemperatureRoom ;
-dp:consumes dp:ConnectivityGateway ;
-core:hasState dp:ACOn ,
-dp:ACoff ;
-core:offers dp:AdjustTemp ,
-dp:SwitchOnOffAC .
-dp:Alarm rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-dp:Processor ;
-dp:consumes dp:ConnectvityWIFIRepeater ,
-dp:DetectSmoke ,
-dp:MeasureTemp ;
-core:hasState dp:fireAlarm ,
-dp:securityAlarm ;
-core:offers dp:MonitorSecurity .
-dp:ChangeBrightness1 rdf:type owl:NamedIndividual ,
-core:Service .
-dp:ChangeBrightness2 rdf:type owl:NamedIndividual ,
-core:Service .
-dp:ChangeLightColor1 rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:setColorBulb1Red .
-dp:ChangeLightColor2 rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:setColorBulb2Red .
-dp:ConnectivityGateway rdf:type owl:NamedIndividual ,
-dp:ConnectivityService .
-dp:ConnectvityWIFIRepeater rdf:type owl:NamedIndividual ,
-dp:ConnectivityService .
-dp:ConrolsLight rdf:type owl:NamedIndividual ,
-core:Service .
-dp:DetectPresence1 rdf:type owl:NamedIndividual ,
-core:Service .
-dp:DetectPresence2 rdf:type owl:NamedIndividual ,
-core:Service .
-dp:DetectSmoke rdf:type owl:NamedIndividual ,
-core:Service .
-dp:Gateway rdf:type owl:NamedIndividual ,
-dp:ConnectivityDevice ,
-core:Device ;
-core:offers dp:ConnectivityGateway .
-dp:IFTTT rdf:type owl:NamedIndividual ,
-dp:triggerActionPlateform ;
-dp:hasRule dp:Rule-001 ,
-dp:Rule-002,
-dp:Rule-003,
-dp:Rule-004,
-dp:Rule-005,
-dp:Rule-006.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix saref:	<https://saref.etsi.org/core/> .
+@prefix org-iot:	<http://orange-labs.fr/fog/ont/iot.owl#> .
+@prefix eupont:	<http://elite.polito.it/ontologies/eupont.owl#> .
+<http://thingin.orange.com/formationthingin/supervisordemo/AC-Off>
+	a	eupont:Trigger ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "b388f9c6-6b2a-5552-b04a-94c533ac75a6"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo> <http://thingin.orange.com/formationthingin/supervisordemo/ACoff> .
 
+<http://thingin.orange.com/formationthingin/supervisordemo/ACoff>
+	a	saref:OffState ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "dbd7bed9-3c18-51ba-8db5-0b6acd737939"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
 
+<http://thingin.orange.com/formationthingin/supervisordemo/ACOn>
+	a	saref:OnState ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "420a1b55-5682-5ab3-ab11-7b70fd40e72e"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
 
+<http://thingin.orange.com/formationthingin/supervisordemo/AdjustTemp>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "541c4ba2-8b7e-51d8-a0c1-d2d20fb4e34e"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/adjustTemp> .
 
-dp:Kitchen rdf:type owl:NamedIndividual ,
-core:FeatureOfInterest ;
-core:hasProperty dp:MotionKitchen ,
-dp:SmokeKitchen .
-dp:LightControlSystem rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-dp:Processor ;
-dp:consumes dp:ChangeBrightness1 ,
-dp:ChangeBrightness2 ,
-dp:ConnectivityGateway ,
-dp:DetectPresence1 ,
-dp:DetectPresence2 ,
-dp:MeasureLight ,
-dp:SwitcLight1 ,
-dp:SwitchLight2 ;
-core:offers dp:ConrolsLight .
-dp:LightKitchen rdf:type owl:NamedIndividual ,
-core:Light .
-dp:LightRoom rdf:type owl:NamedIndividual ,
-core:Light .
-dp:LightSensor rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Sensor ;
-dp:consumes dp:ConnectivityGateway ;
-core:measuresProperty dp:LightRoom ;
-core:offers dp:MeasureLight .
-dp:MeasureLight rdf:type owl:NamedIndividual ,
-core:Service .
-dp:MeasureTemp rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:getTemp .
-dp:MonitorSecurity rdf:type owl:NamedIndividual ,
-core:Service .
-dp:MotionKitchen rdf:type owl:NamedIndividual ,
-core:Motion .
-dp:MotionRoom rdf:type owl:NamedIndividual ,
-core:Motion ;
-core:hasState dp:isHere2 ,
-dp:isNotHere2 ;
-core:measuresProperty dp:MotionKitchen ;
-core:offers dp:DetectPresence2 .
-dp:MotionSensor1 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Sensor ;
-dp:consumes dp:ConnectivityGateway ;
-core:hasState dp:isHere1 ,
-dp:isNotHere1 ;
-core:measuresProperty dp:MotionRoom ;
-core:offers dp:DetectPresence1 .
-dp:MotionSensor2 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Sensor ;
-dp:consumes dp:ConnectvityWIFIRepeater ;
-core:hasState dp:isHere2 ,
-dp:isNotHere2 ;
-core:measuresProperty dp:MotionKitchen ;
-core:offers dp:DetectPresence2 .
-dp:NotAtHome rdf:type owl:NamedIndividual ,
-dp:Trigger .
-dp:OpenCloseDoor rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:closedoor ,
-dp:opendoor .
-dp:OpenCloseWindow1 rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:closewindow1 ,
-dp:openwindow1 .
-dp:OpenCloseWindow2 rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:closewindow2 ,
-dp:openwindow2 .
-dp:OpenCloseWindow3 rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:closewindow3 ,
-dp:openwindow3 .
-dp:Presence rdf:type owl:NamedIndividual ,
-dp:Trigger ;
-dp:relatedTo dp:isHere1 ,
-dp:isHere2 .
-dp:Room rdf:type owl:NamedIndividual ,
-core:FeatureOfInterest ;
-core:hasProperty dp:LightRoom ,
-dp:MotionRoom ,
-dp:TemperatureRoom .
-dp:Rule-001 rdf:type owl:NamedIndividual ,
-eupont:Rule ;
-eupont:hasAction dp:opendoor ,
-dp:openwindow1 ,
-dp:openwindow2 ,
-dp:openwindow3 ;
-eupont:hasTrigger dp:firealarm .
-dp:Rule-002 rdf:type owl:NamedIndividual ,
-eupont:Rule ;
-eupont:hasAction dp:openwindow1 ,
-dp:openwindow2 ,
-dp:openwindow3 ;
-eupont:hasTrigger dp:AC-Off .
-dp:Rule-003 rdf:type owl:NamedIndividual ,
-eupont:Rule ;
-eupont:hasAction dp:closedoor ,
-dp:closewindow1 ,
-dp:closewindow2 ,
-dp:closewindow3 ,
-dp:setColorBulb1Red ,
-dp:setColorBulb2Red ;
-eupont:hasTrigger dp:complexT .
-dp:Rule-004 rdf:type owl:NamedIndividual ,
-eupont:Rule ;
-eupont:hasAction dp:switchOffAC ;
-eupont:hasTrigger dp:NotAtHome .
-dp:SmarWindow1 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ;
-dp:consumes dp:ConnectivityGateway ;
-core:offers dp:OpenCloseWindow1 .
-dp:SmartDoor rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ;
-dp:consumes dp:ConnectvityWIFIRepeater ;
-core:offers dp:OpenCloseDoor .
-dp:SmartLightBulb1 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ;
-dp:changesProperty dp:LightRoom ;
-dp:consumes dp:ConnectivityGateway ;
-core:offers dp:ChangeBrightness1 ,
-dp:ChangeLightColor1 ,
-dp:SwitcLight1 .
-dp:SmartLightBulb2 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ;
-dp:changesProperty dp:LightKitchen ;
-dp:consumes dp:ConnectvityWIFIRepeater ;
-core:offers dp:ChangeBrightness2 ,
-dp:ChangeLightColor2 ,
-dp:SwitchLight2 .
-dp:SmartPhone rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-dp:Processor ;
-dp:consumes dp:AdjustTemp ,
-dp:ChangeBrightness1 ,
-dp:ChangeBrightness2 ,
-dp:ConnectivityGateway ,
-dp:ConnectvityWIFIRepeater ,
-dp:OpenCloseDoor ,
-dp:OpenCloseWindow1 ,
-dp:OpenCloseWindow2 ,
-dp:OpenCloseWindow3 ,
-dp:SwitcLight1 ,
-dp:SwitchLight2 .
-dp:SmartWindow2 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ;
-dp:consumes dp:ConnectvityWIFIRepeater ;
-core:offers dp:OpenCloseWindow2 .
-dp:Smartwindow3 rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Actuator ;
-dp:consumes dp:ConnectivityGateway ,
-dp:ConnectvityWIFIRepeater ;
-core:offers dp:OpenCloseWindow3 .
-dp:SmokeKitchen rdf:type owl:NamedIndividual ,
-core:Smoke .
-dp:SmokeSensor rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Sensor ;
-dp:consumes dp:ConnectvityWIFIRepeater ;
-core:hasState dp:thereIsNotSmoke ,
-dp:thereIsSmoke ;
-core:measuresProperty dp:SmokeKitchen ;
-core:offers dp:DetectSmoke .
-dp:SwitcLight1 rdf:type owl:NamedIndividual ,
-core:Service .
-dp:SwitchLight2 rdf:type owl:NamedIndividual ,
-core:Service .
-dp:SwitchOnOffAC rdf:type owl:NamedIndividual ,
-core:Service ;
-dp:allowsAction dp:switchOffAC .
-dp:Temp rdf:type owl:NamedIndividual ,
-dp:Application ;
-eupont:hasAction dp:adjustTemp ,
-dp:getTemp ;
-dp:hasRule dp:Rule-004 .
-dp:TempSensor rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-core:Sensor ;
-dp:consumes dp:ConnectivityGateway ;
-core:measuresProperty dp:TemperatureRoom ;
-core:offers dp:MeasureTemp .
-dp:TemperatureRoom rdf:type owl:NamedIndividual ,
-core:Temperature .
-dp:WifiRepeater rdf:type owl:NamedIndividual ,
-dp:ConnectivityDevice ,
-core:Device ;
-dp:consumes dp:ConnectivityGateway ;
-core:offers dp:ConnectvityWIFIRepeater .
-dp:adjustTemp rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:closedoor rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:closewindow1 rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:closewindow2 rdf:type owl:NamedIndividual ,
- dp:Action .
- dp:closewindow3 rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:complexT rdf:type owl:NamedIndividual ,
-dp:ComplexTrigger ;
-dp:hasChildTrigger dp:NotAtHome ,
-dp:Presence .
-dp:fireAlarm rdf:type owl:NamedIndividual ,
-core:State .
-dp:firealarm rdf:type owl:NamedIndividual ,
-dp:Trigger ;
-dp:relatedTo dp:fireAlarm .
-dp:getTemp rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:isHere1 rdf:type owl:NamedIndividual ,
-core:State .
-dp:isHere2 rdf:type owl:NamedIndividual ,
-core:State .
-dp:isNotHere1 rdf:type owl:NamedIndividual ,
-core:State .
-dp:isNotHere2 rdf:type owl:NamedIndividual ,
-core:State .
-dp:opendoor rdf:type owl:NamedIndividual ,
-dp:Action ;
-dp:allowsAction dp:adjustTemp .
-dp:openwindow1 rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:openwindow2 rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:openwindow3 rdf:type owl:NamedIndividual ,
-dp:Action .
- dp:securityAlarm rdf:type owl:NamedIndividual ,
-core:State .
-dp:setColorBulb1Red rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:setColorBulb2Red rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:switchOffAC rdf:type owl:NamedIndividual ,
-dp:Action .
-dp:temp rdf:type owl:NamedIndividual ,
-dk:DataFlow ;
-dk:flowsFrom dp:getTemp ;
-dk:flowsTo dp:adjustTemp .
-dp:thereIsNotSmoke rdf:type owl:NamedIndividual ,
-core:State .
-dp:thereIsSmoke rdf:type owl:NamedIndividual ,
-core:State .
-dp:vocalAssistant rdf:type owl:NamedIndividual ,
-dp:IoTDevice ,
-dp:Processor ;
-dp:consumes dp:AdjustTemp ,
-dp:ChangeBrightness1 ,
-dp:ChangeBrightness2 ,
-dp:ConnectivityGateway ,
-dp:OpenCloseDoor ,
-dp:OpenCloseWindow1 ,
-dp:OpenCloseWindow2 ,
-dp:OpenCloseWindow3 ,
-dp:SwitcLight1 ,
-dp:SwitchLight2 ,
-dp:SwitchOnOffAC .
+<http://thingin.orange.com/formationthingin/supervisordemo/adjustTemp>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "40b55567-aa4e-56be-8ee7-e18aae7aff63"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
 
-dp:Rule-005 rdf:type owl:NamedIndividual ,
-eupont:Rule .
+<http://thingin.orange.com/formationthingin/supervisordemo/AirConditionner>
+	a	saref:Device ;
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "85d11d0d-570a-5b18-a113-c755f6e314e8"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/TempSensor> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/AdjustTemp> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/ACoff> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasApplicationDataDependency> <http://thingin.orange.com/formationthingin/supervisordemo/TempSensor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#changesProperty> <http://thingin.orange.com/formationthingin/supervisordemo/TemperatureRoom> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/ACOn> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/SwitchOnOffAC> .
 
-dp:Rule-006 rdf:type owl:NamedIndividual ,
-eupont:Rule .
+<http://thingin.orange.com/formationthingin/supervisordemo/Alarm>
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Processor> ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "e973c21f-d8e2-5d49-9eb9-5b572e0f3986"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/detectLeak> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/LeakDetector> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ChangeLightColor1> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/MonitorSecurity> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ChangeLightColor2> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/securityAlarm> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmokeSensor> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/fireAlarm> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmartDoor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/onWaterValve> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/TempSensor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/WaterValve> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/MeasureTemp> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseDoor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/DetectSmoke> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ChangeBrightness1>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "92546774-6d22-57af-98b1-24dc96b9c36e"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ChangeBrightness2>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "3e10e4dd-f4b8-56ca-bc58-62fa823cc19f"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ChangeLightColor1>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "5b305dbb-ae82-5b10-9ea9-2d78aea578b7"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/setColorBulb1Red> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ChangeLightColor2>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "90e9d76e-9c4b-5053-a075-7a7dc2bae25d"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/setColorBulb2Red> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/closedoor>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "2e899445-6c48-5c02-b419-ba51f62a255a"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/closewindow1>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "be475014-0ded-5dfd-991d-4d943d79af94"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/closewindow2>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "fb223ece-d27c-5275-a606-da00173464cb"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/complexT>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ComplexTrigger> ;
+	org-iot:uuid "fa43ac5e-2330-53e4-bf59-961e99f399e1"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasChildTrigger> <http://thingin.orange.com/formationthingin/supervisordemo/Presence> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasChildTrigger> <http://thingin.orange.com/formationthingin/supervisordemo/NotAtHome> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ConnectivityService> ;
+	org-iot:uuid "84808248-dcdc-5074-841f-3872d56f0abb"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ConnectivityService> ;
+	org-iot:uuid "88e67436-1360-5884-89a0-01ecc269cd38"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/ConrolsLight>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "bb5e68b9-7a80-5041-88c8-28ef20629a29"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/detectLeak>
+	a	saref:Service ;
+	org-iot:uuid "c9b0c230-5cdb-5fcb-9c84-edbb2c409937"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence1>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "d563992e-8404-5683-84f5-7e1d62e55cd0"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence2>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "3d539ae6-9080-574f-9e4e-9ec13e7246b7"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/DetectSmoke>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "74627de7-dc0e-56c0-a570-14edaaf5bf25"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/exceeded>
+	a	saref:State ;
+	org-iot:uuid "5bc96b50-e9b8-5b3f-9140-cbee8b4115e8"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/fireAlarm>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "102e46d6-0e21-55dd-be3a-05eea59c72d8"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/firealarm>
+	a	eupont:Trigger ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "adb1f103-9eab-54f5-92d9-a396c7ec1862"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo> <http://thingin.orange.com/formationthingin/supervisordemo/fireAlarm> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Gateway>
+	a	saref:Device ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ConnectivityDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "92da6622-b3e6-5221-82f1-fea0c7c2e3c7"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/getTemp>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "c02f8094-9cde-5f73-adec-65ab0b4230dc"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/IFTTT>
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#triggerActionPlateform> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "2b5fc1f7-a472-5323-9d7f-7a3315fee7af"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-001> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-002> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-003> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-004> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-005> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-006> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/isHere1>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "bacc8167-b550-5bcc-961d-ee0575bc0403"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/isHere2>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "283c891c-5e59-5704-98e3-ad3840f02c4f"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/isNotHere1>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "c57a2f34-641d-5bb5-a3e4-cfb10a5cfa6c"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/isNotHere2>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "ddb3a495-f84f-5314-9fbb-01c631d8c9c3"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Kitchen>
+	a	saref:FeatureOfInterest ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "a414a0e5-04a2-5287-8586-f4e265c57285"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	saref:hasProperty <http://thingin.orange.com/formationthingin/supervisordemo/SmokeKitchen> ;
+	saref:hasProperty <http://thingin.orange.com/formationthingin/supervisordemo/MotionKitchen> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/leakDetect>
+	a	eupont:Trigger ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "c228feba-2955-58a9-a46d-7724b77f8100"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo> <http://thingin.orange.com/formationthingin/supervisordemo/leakDetected> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/leakDetected>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "fe33158e-e4ec-5af7-9b95-557d30418ac7"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/LeakDetector>
+	a	saref:Sensor ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "ec4f6362-6da0-54cf-86b5-0d6b41d01b97"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/detectLeak> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/leakDetected> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/LightControlSystem>
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Processor> ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "1b3209ae-9ec2-54db-ae1a-c4b7da83f2d3"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/LightSensor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/MeasureLight> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/SwitchLight2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/SwitcLight1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/MotionSensor1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/MotionSensor2> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ConrolsLight> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ChangeBrightness2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ChangeBrightness1> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/LightKitchen>
+	a	saref:Light ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "dffba5fb-c5e3-567a-8fd8-ca44f01c24b7"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/LightRoom>
+	a	saref:Light ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "47d80d53-36e3-59a5-97ca-b511821d0f5b"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/LightSensor>
+	a	saref:Sensor ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "b979481e-1af1-50f5-b4f8-3c6cfdd55211"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasEnvironmentDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb1> ;
+	saref:measuresProperty <http://thingin.orange.com/formationthingin/supervisordemo/LightRoom> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/MeasureLight> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MeasureLight>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "e82dfee5-28cd-5f2b-a20f-70b4324d6018"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MeasureTemp>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "a482fbf4-efe0-5af2-a43a-084152b3424b"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/getTemp> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MonitorSecurity>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "4552d75d-0439-5fd2-bf10-c9f1d50234af"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MotionKitchen>
+	a	saref:Motion ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "53ae049d-d8ca-5f38-8d91-4ea19186f3de"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MotionRoom>
+	a	saref:Motion ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "4453290f-34b8-5ab3-89ca-5e4a9cf81f20"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/isHere2> ;
+	saref:measuresProperty <http://thingin.orange.com/formationthingin/supervisordemo/MotionKitchen> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence2> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/isNotHere2> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MotionSensor1>
+	a	saref:Sensor ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "1b7c84e0-2745-5376-ab59-cf0c7c292aa8"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence1> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/isHere1> ;
+	saref:measuresProperty <http://thingin.orange.com/formationthingin/supervisordemo/MotionRoom> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/isNotHere1> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/MotionSensor2>
+	a	saref:Sensor ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "2bb49206-d488-5388-98de-6c0843a624b8"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/DetectPresence2> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/isHere2> ;
+	saref:measuresProperty <http://thingin.orange.com/formationthingin/supervisordemo/MotionKitchen> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/isNotHere2> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/NotAtHome>
+	a	eupont:Trigger ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "db7fa4a9-8ef6-5f51-bc70-61b2ce71d3f9"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/onWaterValve>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "63a55af0-e501-51c1-bbc9-ee17af8efeab"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/setWaterValveToOn> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseDoor>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "231d3a14-6207-5d39-9b0b-2533f750f8f8"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/opendoor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/closedoor> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseWindow1>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "bddfa2e0-24c2-50fd-b4f6-de8c783162b8"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/closewindow1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/openwindow1> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseWindow2>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "2c9657c6-23a1-5846-a908-4721cc14e56b"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/closewindow2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/openwindow2> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/opendoor>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "55beb85e-dcbb-582f-9d8b-3b5d175078c1"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/adjustTemp> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/openwindow1>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "16a897dc-6e3f-5da1-9577-b0cfbd818790"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/openwindow2>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "87a22e9c-9dc6-5281-bed4-603c1ec69e88"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Presence>
+	a	eupont:Trigger ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "f75394de-1542-526f-8aaa-c441cd70ca3b"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo> <http://thingin.orange.com/formationthingin/supervisordemo/isHere2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo> <http://thingin.orange.com/formationthingin/supervisordemo/isHere1> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Room>
+	a	saref:FeatureOfInterest ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "f5bfc17e-2b11-5791-8f2a-18145cf4ef4b"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	saref:hasProperty <http://thingin.orange.com/formationthingin/supervisordemo/MotionRoom> ;
+	saref:hasProperty <http://thingin.orange.com/formationthingin/supervisordemo/LightRoom> ;
+	saref:hasProperty <http://thingin.orange.com/formationthingin/supervisordemo/TemperatureRoom> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Rule-001>
+	a	eupont:Rule ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "ba0c35f8-e3ea-5790-98f0-a377f7a5958f"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/openwindow2> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/opendoor> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/openwindow1> ;
+	eupont:hasTrigger <http://thingin.orange.com/formationthingin/supervisordemo/firealarm> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Rule-002>
+	a	eupont:Rule ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "a0a89f18-27d3-547a-bdd3-eb83a326fa5d"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasTrigger <http://thingin.orange.com/formationthingin/supervisordemo/AC-Off> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/openwindow2> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/openwindow1> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Rule-003>
+	a	eupont:Rule ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "8b153919-3655-5098-bb04-e43e9bcf12be"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/setColorBulb2Red> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/closewindow1> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/setColorBulb1Red> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/closewindow2> ;
+	eupont:hasTrigger <http://thingin.orange.com/formationthingin/supervisordemo/complexT> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/closedoor> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Rule-004>
+	a	eupont:Rule ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "aad3a2c6-8b15-5c0c-bb5a-c50008de9174"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/switchOffAC> ;
+	eupont:hasTrigger <http://thingin.orange.com/formationthingin/supervisordemo/NotAtHome> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Rule-005>
+	a	eupont:Rule ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "872a0d03-e9b9-500d-969a-a371f4f58f3d"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasTrigger <http://thingin.orange.com/formationthingin/supervisordemo/leakDetect> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/setWaterValveToOn> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Rule-006>
+	a	eupont:Rule ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "820de472-eb82-518b-9c87-d98166315988"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/closewindow2> ;
+	eupont:hasTrigger <http://thingin.orange.com/formationthingin/supervisordemo/tempExceeded> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/closewindow1> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/switchOnAC> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/securityAlarm>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "d2da3657-c98d-5b47-adcf-724cd46b4866"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/setColorBulb1Red>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "a20dbf14-ba7e-5769-830f-321b06810f4d"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/setColorBulb2Red>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "77015035-e4ef-5c4e-9e84-a9a618f5d588"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/setWaterValveToOn>
+	a	eupont:Action ;
+	org-iot:uuid "6b07f009-c5c1-5caf-a43e-45c738a7cead"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmartDoor>
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "91190d8a-6b2b-55c0-b260-f5e264fe8a48"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseDoor> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/Alarm> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb1>
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "b4cd49b4-a003-5087-bf61-2dca2ff64a63"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ChangeLightColor1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#changesProperty> <http://thingin.orange.com/formationthingin/supervisordemo/LightRoom> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/SwitcLight1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ChangeBrightness1> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmartLightBulb2>
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "dd7ff49b-1678-5c32-8239-38674c19b371"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/SwitchLight2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#changesProperty> <http://thingin.orange.com/formationthingin/supervisordemo/LightKitchen> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ChangeLightColor2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ChangeBrightness2> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmartThingsHub>
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Processor> ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "7af3a76d-0081-5694-ac0e-4b76e1c4394b"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmartWindow2>
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "dd0171f8-fb7f-56b9-b7db-6e6f2deffb3d"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/AirConditionner> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseWindow2> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/Alarm> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/TempSensor> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmarWindow1>
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "89a1b3cd-b799-5ccc-b885-6d3bdb974a9d"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/Alarm> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/TempSensor> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/OpenCloseWindow1> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/AirConditionner> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmokeKitchen>
+	a	saref:Smoke ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "ce487e60-78ec-525c-bfbc-870d9088e143"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SmokeSensor>
+	a	saref:Sensor ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "7f94ad62-e829-58fe-ba0a-cbf11803c2f9"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	saref:measuresProperty <http://thingin.orange.com/formationthingin/supervisordemo/SmokeKitchen> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/thereIsSmoke> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/thereIsNotSmoke> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/DetectSmoke> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SwitchLight2>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "6b589462-ce20-5b44-af5b-503f52c00cb5"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/switchOffAC>
+	a	eupont:Action ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "1ca005cd-8f0d-5c86-800f-c9386ec6bc97"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/switchOnAC>
+	a	eupont:Action ;
+	org-iot:uuid "2d0f3c7e-99b5-53b4-8431-612c82fe4840"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SwitchOnOffAC>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "116dd41d-5dcb-57fd-aac3-1750bb5b1832"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/switchOffAC> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> <http://thingin.orange.com/formationthingin/supervisordemo/switchOnAC> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/SwitcLight1>
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	a	saref:Service ;
+	org-iot:uuid "60cc177c-5958-5743-a22a-546969004c2c"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/Temp>
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Application> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "a575485b-35f3-5978-b822-5a862346defd"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/adjustTemp> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule> <http://thingin.orange.com/formationthingin/supervisordemo/Rule-004> ;
+	eupont:hasAction <http://thingin.orange.com/formationthingin/supervisordemo/getTemp> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/temp>
+	a	<http://www.data-knowledge.org/dk/DataFlow> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "a47898f7-d491-55d4-a21a-abc25b05fd63"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.data-knowledge.org/dk/flowsFrom> <http://thingin.orange.com/formationthingin/supervisordemo/getTemp> ;
+	<http://www.data-knowledge.org/dk/flowsTo> <http://thingin.orange.com/formationthingin/supervisordemo/adjustTemp> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/TemperatureRoom>
+	a	saref:Temperature ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "8afd936e-2c3b-50b4-bd72-e313bd2f4339"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/tempExceeded>
+	a	eupont:Trigger ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "5df2e19a-240a-5eae-bc4b-6e203b2bd4c5"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo> <http://thingin.orange.com/formationthingin/supervisordemo/exceeded> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/TempSensor>
+	a	saref:Sensor ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "2e4b1ccd-374e-506d-b0ef-d8fe4569736b"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasEnvironmentDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/AirConditionner> ;
+	saref:measuresProperty <http://thingin.orange.com/formationthingin/supervisordemo/TemperatureRoom> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/MeasureTemp> ;
+	saref:hasState <http://thingin.orange.com/formationthingin/supervisordemo/exceeded> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/thereIsNotSmoke>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "9745d388-5a72-52d1-8203-cd80877a8ffa"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/thereIsSmoke>
+	a	saref:State ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "9d5221b3-1006-5631-bc8c-696047600f44"^^xsd:string ;
+	org-iot:lastUpdated "1684229985402"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/WaterValve>
+	a	saref:Actuator ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "8feed7e6-192b-58ea-bb23-5d270093e2b1"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo> <http://thingin.orange.com/formationthingin/supervisordemo/LeakDetector> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/onWaterValve> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater> .
+
+<http://thingin.orange.com/formationthingin/supervisordemo/WifiRepeater>
+	a	saref:Device ;
+	a	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ConnectivityDevice> ;
+	a	<http://www.w3.org/2002/07/owl#NamedIndividual> ;
+	org-iot:uuid "ca491ca9-fc77-5385-861e-d8e9a63e40a1"^^xsd:string ;
+	org-iot:lastUpdated "1684230173117"^^xsd:long ;
+	org-iot:creationDate "1684229985402"^^xsd:long ;
+	org-iot:source "7cab7868-0340-4ce4-a1c0-384af164652a"^^xsd:string ;
+	org-iot:visibility "255"^^xsd:int ;
+	org-iot:owner "3b810a44-8939-4811-9af5-fa599ba3f1f4"^^xsd:string ;
+	saref:offers <http://thingin.orange.com/formationthingin/supervisordemo/ConnectvityWIFIRepeater> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes> <http://thingin.orange.com/formationthingin/supervisordemo/ConnectivityGateway> ;
+	<http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency> <http://thingin.orange.com/formationthingin/supervisordemo/Gateway> .
