@@ -39,7 +39,6 @@ public class Dependency extends Artifact {
                 .uri(URI.create("https://coreapi.thinginthefuture.com/auth"))
                 .setHeader("accept", "text/plain")
                 .setHeader("Use-Cache", "true")
-                .setHeader("Authorization",  "Basic YW1hbC5ndWl0dG91bUBvcmFuZ2UuY29tOkFtb3VsYTE5OTYm")
                 .build();
  
           try {
