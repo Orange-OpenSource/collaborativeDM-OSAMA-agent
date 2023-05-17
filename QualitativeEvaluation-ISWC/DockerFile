@@ -1,1 +1,36 @@
+# Dockerfile to run OSAMA Use Case
+# based on JaCaMo 1.1
 
+FROM openjdk:15-jdk-alpine
+
+ENV JACAMO_HOME=/jacamo/build
+ENV PATH $PATH:$JAVA_HOME/bin:$JACAMO_HOME/scripts
+#ENV http_proxy [proxy http if any] 
+#ENV https_proxy [proxy https if any] 
+
+#RUN export HTTP_PROXY=[proxy http if any]
+#RUN export HTTPS_PROXY=[proxy https if any]  
+ 
+
+RUN apk add --update --no-cache git bash fontconfig ttf-dejavu graphviz \
+    libxrender libxtst libxi
+#RUN git config --global http.proxy [proxy http if any]
+RUN git config --global url."https://github.com/".insteadOf git@github.com:
+
+RUN git clone https://github.com/Amalguittoum/jacamo.git && \
+    cd jacamo && \
+    ./gradlew config
+    #Use this command if any proxy is used ./gradlew -Dhttp.proxyHost=[proxy http if any] -Dhttp.proxyPort=port -Dhttps.proxyHost=[proxy https if any] -Dhttps.proxyPort=port "-Dhttp.nonProxyHosts=*.nonproxyrepos.com|localhost" config
+
+RUN git clone https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent.git
+WORKDIR collaborativeDM-OSAMA-agent
+ 
+
+EXPOSE 3271
+EXPOSE 3272
+EXPOSE 3273
+EXPOSE 8080
+EXPOSE 8081
+
+ENTRYPOINT [ "/bin/bash" ]
+#CMD []
