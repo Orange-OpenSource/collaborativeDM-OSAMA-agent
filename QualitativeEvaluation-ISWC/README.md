@@ -15,11 +15,16 @@ collaborativeDM-OSAMA-agent/QualitativeEvaluation-ISWC/
 ```
 ## Deployment Steps
 1. Get Developper Access to the Orange platform [Thing'in](https://tech2.thinginthefuture.com/) by contacting amal.guittoum@orange.com
+2. Clone the repository to the desired folder
+```
+git clone https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent
+```
 3. Use your Thing'in access token by updating the line 42 in the file [Dependency.java](src/env/tools/Dependency.java)
 ```
 .setHeader("Authorization",  "Basic [YOUR Token]")
 ```
 4. Build the Docker IMAGE [DockerFile](DockerFile)
+In the code folder collaborativeDM-OSAMA-agent run the command
 ```
 sudo docker build --no-cache --file=dockerFile --tag=osama-agent --rm=true .
 ```
