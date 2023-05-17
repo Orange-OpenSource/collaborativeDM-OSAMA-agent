@@ -24,7 +24,7 @@ git clone https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent
 .setHeader("Authorization",  "Basic [YOUR Token]")
 ```
 4. Build the Docker IMAGE [DockerFile](DockerFile)
-In the code folder collaborativeDM-OSAMA-agent run the command
+In the parent folder of the code folder collaborativeDM-OSAMA-agent run the command:
 ```
 sudo docker build --no-cache --file=dockerFile --tag=osama-agent --rm=true .
 ```
