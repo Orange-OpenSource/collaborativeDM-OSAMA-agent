@@ -23,7 +23,8 @@ RUN git clone https://github.com/Amalguittoum/jacamo.git && \
     #Use this command if any proxy is used ./gradlew -Dhttp.proxyHost=[proxy http if any] -Dhttp.proxyPort=port -Dhttps.proxyHost=[proxy https if any] -Dhttps.proxyPort=port "-Dhttp.nonProxyHosts=*.nonproxyrepos.com|localhost" config
 
 RUN git clone https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent.git
-WORKDIR collaborativeDM-OSAMA-agent
+COPY collaborativeDM-OSAMA-agent /code/CollabDM
+WORKDIR /code/CollabDM
  
 
 EXPOSE 3271
