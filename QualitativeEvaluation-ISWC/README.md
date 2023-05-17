@@ -34,5 +34,5 @@ docker run -ti --rm osama-agent jacamo orange.jcm
 ```
 6. Observe message exchange between agents managing the following casacding failure scenarios
 <p align="center">
-<img src="https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent/blob/master/smartHome.png" width="300" height="250">
+<img src="https://github.com/Orange-OpenSource/collaborativeDM-OSAMA-agent/blob/master/scenario-1.png" width="300" height="250">
 </p> 
